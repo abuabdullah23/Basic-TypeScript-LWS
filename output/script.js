@@ -1,8 +1,9 @@
+"use strict";
 console.log('Hello world');
 // variable
-var country = "Bangladesh";
+const country = "Bangladesh";
 // function
-var showFunction = function () {
+const showFunction = () => {
     return console.log('This is Function');
 };
 showFunction();
