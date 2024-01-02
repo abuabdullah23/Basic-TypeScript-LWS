@@ -58,3 +58,56 @@ mixed.push(false); // no error
 // person.country = 'Bangladesh'; // error: Property 'country' does not exist on type '{ name: string; age: number; isMan: boolean; }'.
 // person.name = 'Tamim';
 // console.log(person);
+// 04. =========== Explicit & Union Types ==========
+// // normal variable Union Types
+// let b: string | number;
+// b = false; // error
+// // array Union Types
+// let array3: (string | number)[] = [];
+// array3.push(4);
+// array3.push('Sakib');
+// array3.push(false); // error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
+// console.log(array3);
+// // object
+// // Only declare, not schema model
+// let obj: object;
+// obj = { player: 'Sakib' };
+// obj = { age: 39 };
+// obj = [34, 'Tamim', true];
+// obj = {name: 'Murtaza', age: 43, isCaptain: false} // we can insert anything
+// console.log(obj);
+// // declare and schema model. 
+// let obj2: {
+//     name: string,
+//     age: number,
+//     isOld: boolean
+// };
+// // obj2 =[];// error
+// // obj2 =['jsdf' , 534];// error
+// // obj2 ={name: 'Sakib'} // error: Type '{ name: string; }' is missing the following properties from type '{ name: string; age: number; isOld: boolean; }': age, isOld
+// obj2 = {
+//     name: 'Tamim',
+//     age: 45,
+//     isOld: false
+// }
+// console.log(obj2);
+// ======== 05 - Dynamic Type : any type ========
+// primitive
+let a;
+a = 'Farid';
+a = 45;
+console.log(a);
+// array
+let array4 = [];
+array4.push(4);
+array4.push('Name');
+array4.push(true);
+console.log(array4);
+// object
+let obj4;
+obj4 = {
+    name: '45',
+    age: 'Bangladesh',
+    isTrue: 54
+};
+console.log(obj4);
