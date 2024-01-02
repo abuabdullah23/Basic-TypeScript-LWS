@@ -197,23 +197,68 @@ mixed.push(false); // no error
 
 // ======= 7 - Type Aliases =========
 
-type stringOrNum = string | number;
-type userType = { name: string; age: number };
+// type stringOrNum = string | number;
+// type userType = { name: string; age: number };
 
-const userDetails = (id: stringOrNum, user: userType) => {
-    console.log(`User id is ${id}, name is ${user.name} and age is ${user.age}`);
-}
-userDetails(
-    5653464367456,
-    {
-    name: 'Tamim',
-    age: 55
-})
+// const userDetails = (id: stringOrNum, user: userType) => {
+//     console.log(`User id is ${id}, name is ${user.name} and age is ${user.age}`);
+// }
+// userDetails(
+//     5653464367456,
+//     {
+//     name: 'Tamim',
+//     age: 55
+// })
 
-const sayHello = (user: userType) => {
-    console.log(`Hello ${user.age > 50 ? 'Sir' : 'Mr.'} ${user.name}`);
+// const sayHello = (user: userType) => {
+//     console.log(`Hello ${user.age > 50 ? 'Sir' : 'Mr.'} ${user.name}`);
+// }
+// sayHello({
+//     name: 'Sakib',
+//     age: 45
+// })
+
+
+// ========== Lesson 8 - Function Signatures ==========
+// signature: example 1
+let myF: (x: string, y: string) => void;
+let add: (x: number, y: number) => number;
+
+add = (a: number, b: number) => {
+    return (a + b);
 }
-sayHello({
-    name: 'Sakib',
-    age: 45
-})
+console.log(add(3, 4));
+
+// signature: example 2
+let calculation: (x: number, y: number, z: string) => number;
+
+calculation = (a: number, b: number, c: string) => {
+    if (c === 'add') {
+        return a + b;
+    } else {
+        return a - b;
+    }
+}
+
+console.log(calculation(6, 3, 'add'));
+console.log(calculation(6, 3, 'minus'));
+
+
+// Example 3 : real life
+let userDetails: (userId: number | string, userInfo: {
+    name: string,
+    age: number
+}) => string;
+
+userDetails = (id: number | string, info: { // parameter name can be any text
+    name: string, // properties name should same to same as signature
+    age: number // properties name should same to same as signature
+}) => {
+    return (`
+    Your Id is ${id},
+    Name: ${info.name},
+    Age: ${info.age},
+    `)
+}
+
+console.log(userDetails(34234, { name: 'Tamim', age: 45 }));
