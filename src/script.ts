@@ -124,31 +124,96 @@ mixed.push(false); // no error
 
 // ======== 05 - Dynamic Type : any type ========
 
-// primitive
-let a: any;
-a = 'Farid';
-a = 45;
-console.log(a);
+// // primitive
+// let a: any;
+// a = 'Farid';
+// a = 45;
+// console.log(a);
 
-// array
-let array4: any[] = [];
-array4.push(4);
-array4.push('Name');
-array4.push(true)
-console.log(array4);
+// // array
+// let array4: any[] = [];
+// array4.push(4);
+// array4.push('Name');
+// array4.push(true)
+// console.log(array4);
 
-// object
-let obj4: {
-    name: any,
-    age: any,
-    isTrue: any
+// // object
+// let obj4: {
+//     name: any,
+//     age: any,
+//     isTrue: any
+// }
+// obj4 ={
+//     name: '45',
+//     age: 'Bangladesh',
+//     isTrue: 54
+// };
+// console.log(obj4);
+
+
+
+// ================== 6 - How to use Functions  ==================
+// let myFunc: Function;
+// myFunc = 5; // error: Type 'number' is not assignable to type 'Function'.
+
+// // right code
+// myFunc = () => {
+//     console.log('Hello Function Type');
+// }
+
+// // parameter with optional
+// const myFunc2 = (a: string, b: string, c?: string) => {
+//     console.log(`Hello ${a}, ${b} and ${c}`);
+// }
+// myFunc2(4, 5) // error: Argument of type 'number' is not assignable to parameter of type 'string'.
+
+// // right code
+// myFunc2('Sakib', 'Tamim');
+
+
+// // parameter with default : this function return void, because we do not return anything. like : const myFunc3: (a: string, b: string, c?: string) => void
+// const myFunc3 = (a: string, b: string, c: string = 'Mashrafi') => {
+//     console.log(`Hello ${a}, ${b} and ${c}`);
+// }
+// myFunc3('Sakib', 'Tamim'); // 'Hello Sakib, Tamim and Mashrafi' 
+// myFunc3('Sakib', 'Tamim', 'Iqbal'); // 'Hello Sakib, Tamim and Iqbal'
+
+
+// // function return type : const myFunc4: (a: number, b: number, c?: number) => number
+// const myFunc4 = (a: number, b: number, c: number = 6) => {
+//     return a + b + c
+// }
+// console.log(myFunc4(5, 6, 3));
+
+
+// // function return type : const myFunc5: (a: number, b: number, c?: string) => string
+// const myFunc5 = (a: number, b: number, c: string = 's') => {
+//     return a + b + c
+// }
+// console.log(myFunc5(5, 6));
+
+
+
+
+// ======= 7 - Type Aliases =========
+
+type stringOrNum = string | number;
+type userType = { name: string; age: number };
+
+const userDetails = (id: stringOrNum, user: userType) => {
+    console.log(`User id is ${id}, name is ${user.name} and age is ${user.age}`);
 }
-obj4 ={
-    name: '45',
-    age: 'Bangladesh',
-    isTrue: 54
-};
-console.log(obj4);
+userDetails(
+    5653464367456,
+    {
+    name: 'Tamim',
+    age: 55
+})
 
-
-
+const sayHello = (user: userType) => {
+    console.log(`Hello ${user.age > 50 ? 'Sir' : 'Mr.'} ${user.name}`);
+}
+sayHello({
+    name: 'Sakib',
+    age: 45
+})
